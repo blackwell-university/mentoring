@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiones Mentoring - Sara Gueller</title>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2980B9;      /* Azul principal */
+            --secondary-color: #34495e;     /* Azul oscuro suave */
+            --accent-color: #85C1E9;        /* Azul claro (acento) */
+            --background-color: #F4F6F7;    /* Fondo muy suave, casi blanco */
+            --text-color: #2C3E50;          /* Color texto principal */
+            --white: #FFFFFF;
+            --warning-color: #E74C3C;       /* Rojo para advertencias */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .calendar-container {
+            flex: 1;
+            padding: 1rem;
+            margin: 1rem auto;
+            width: 98%;
+            max-width: 1600px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(41, 128, 185, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100vh - 180px);
+            border: none;
+            border-radius: 8px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        
+        /* Estilos para el Sweet Alert personalizado */
+        .warning-box {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--warning-color);
+            color: var(--warning-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .calendar-container {
+                padding: 0.5rem;
+                margin: 0.5rem;
+                width: 95%;
+            }
+
+            iframe {
+                height: calc(100vh - 160px);
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .calendar-container {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sesiones Mentoring</h1>
+            <p>Mentora Sara Gueller - Impulsando tu desarrollo</p>
+        </header>
+
+        <div class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2foE6rcrkOor1_5ZOo38AvbI9KK36qQvQZMKWcXmxm4w2LJmj0jW4MmMwxEHqEg3BZqr4rhFIk"></iframe>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Sesiones Mentoring - Sara Gueller | <a href="#">Política de privacidad</a></p>
+        </footer>
+    </div>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: '¡Información Importante!',
+                html: `
+                    <div style="text-align: left; padding: 10px; font-size: 1.1em;">
+                        <h3 style="color: #333; margin-bottom: 15px; text-align: center;">Normas de Agendamiento</h3>
+                        
+                        <p style="margin-bottom: 20px; color: #444; line-height: 1.6;">
+                            Para asegurar la disponibilidad y el máximo aprovechamiento para todos, te recordamos que puedes registrarte a una sesión de mentoring como máximo
+                            <strong>una vez por semana</strong>.
+                        </p>
+                        
+                        <p style="margin-bottom: 25px; color: #555;">
+                           Agradecemos tu comprensión y colaboración para el beneficio de toda la comunidad.
+                        </p>
+
+                        <div class="warning-box">
+                           <p style="margin: 0;">
+                                ⚠️ <strong>ATENCIÓN:</strong> Los registros duplicados o que no cumplan la norma de una sesión por semana serán <strong>cancelados automáticamente</strong> sin previo aviso.
+                           </p>
+                        </div>
+                    </div>
+                `,
+                icon: 'info',
+                iconColor: '#2980B9',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#2980B9',
+                width: '600px',
+                showCloseButton: true,
+                allowOutsideClick: false
+            });
+        });
+    </script>
+</body>
+</html>
